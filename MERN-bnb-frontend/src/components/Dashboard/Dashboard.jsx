@@ -2,19 +2,38 @@
 
 import { useContext } from 'react';
 import { AuthedUserContext } from '../../App';
+import NavBar from '../NavBar/NavBar';
 
-const Dashboard = () => {
+
+const Dashboard = ({handleSignout}) => {
 
   const user = useContext(AuthedUserContext);
-    return (
+    if (user.userType === 'traveller') {
+      return (
       <main>
+        <NavBar handleSignout={handleSignout} />
         <h1>Welcome, {user.username}</h1>
         <p>
-          This is the dashboard page where you, and only you, can see a dashboard
-          of all of your things.
+        {console.log(user)}
+          You are a {user.userType}
         </p>
+        
       </main>
-    );
+    );} else {
+      return (
+        <main>
+          <NavBar handleSignout={handleSignout} />
+          <h1>Welcome, {user.username}</h1>
+          <p>
+            {console.log(user)}
+            You are a {user.userType}
+          </p>
+
+        </main>
+      )
+    }
+
+    
   };
   
   export default Dashboard;

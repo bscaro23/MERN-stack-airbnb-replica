@@ -11,6 +11,9 @@ const NavBar = ({  handleSignout }) => {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="" onClick={handleSignout} >Sign Out</Link></li>
+            <li><Link to="/property" >Properties</Link></li>
+            {user.userType === 'traveller' ? (<li><Link to="/applications" >Applications</Link></li>) : 
+            (<li><Link to="/property/new">NEW PROPERTY</Link></li>)}
           </ul>
         </nav>
       ) : (

@@ -14,21 +14,15 @@ const bnbSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  properties: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Property', // Referencing another collection (if applicable)
-    },
-  ],
   details: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Details', // Referencing another collection (if applicable)
+    ref: 'Details', 
   },
 });
 
 bnbSchema.set('toJSON', {
   transform: (document, returnedObject) => {
-    delete returnedObject.hashedPassword; // Remove sensitive info from JSON output
+    delete returnedObject.hashedPassword; 
   },
 });
 

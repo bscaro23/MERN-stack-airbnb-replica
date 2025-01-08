@@ -24,9 +24,9 @@ router.post('/signup', async (req, res) => {
             hashedPassword: bcrypt.hashSync(req.body.password, SALT_LENGTH)
         })
         const token = jwt.sign(
-            { username: user.username, _id: user._id },
-            process.env.JWT_SECRET
-          );
+          { username: user.username, _id: user._id, userType: 'traveller' },
+          process.env.JWT_SECRET
+        );
         res.status(201).json({ user, token });
     } catch (error) {
         if (error.name === 'ValidationError') {
@@ -50,19 +50,19 @@ router.post('/signup/BnB', async (req, res) => {
       return res.status(400).json({ error: 'Username already taken.' });
     }
 
-    // Create a new BnB user
+
     const user = await BnB.create({
       username: req.body.username,
       hashedPassword: bcrypt.hashSync(req.body.password, SALT_LENGTH),
     });
 
-    // Generate a JWT token
+    
     const token = jwt.sign(
-      { username: user.username, _id: user._id, userType: 'BnB' },
+      { username: user.username, _id: user._id, userType: 'bnb' },
       process.env.JWT_SECRET
     );
 
-    // Send response with user info and token
+  
     res.status(201).json({ user, token });
   } catch (error) {
     if (error.name === 'ValidationError') {
@@ -78,15 +78,16 @@ router.post('/signup/BnB', async (req, res) => {
 
 router.post('/signin', async (req, res) => {
   try {
-    const user = await Promise.any([
-      Traveller.findOne({ username: req.body.username }),
-      BnB.findOne({ username: req.body.username }),
-    ]);
+    const traveller = await Traveller.findOne({ username: req.body.username });
+    const bnb = await BnB.findOne({ username: req.body.username });
 
+    // Determine which user model the user belongs to
+    const user = traveller || bnb;
     
     if (user && bcrypt.compareSync(req.body.password, user.hashedPassword)) {
+      const userType = traveller ? 'traveller' : 'bnb';
       const token = jwt.sign(
-        { username: user.username, _id: user._id, userType: user.constructor.modelName },
+        { username: user.username, _id: user._id, userType: userType },
         process.env.JWT_SECRET
       );
       res.status(200).json({ token });
@@ -100,3 +101,10 @@ router.post('/signin', async (req, res) => {
 
 
   module.exports = router;
+
+
+  //Todo 1. Fix the Log  in issue as it doesnt add the type to the userType to the token for some reason.
+  //Todo 2. Make the create, edit and delete portions of the BnB side
+  //Todo 3. Index Should only show a single person's properties
+  //Todo 4. Make it visible to the renter all properties.
+  //Todo 5. Make it So a Renter can apply to a property.
