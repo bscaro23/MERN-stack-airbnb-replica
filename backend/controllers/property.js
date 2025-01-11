@@ -40,8 +40,26 @@ router.post('/', async (req, res) => {
 
   router.get('/:propertyId', async (req, res) => {
     try {
-      const property = await Property.findById(req.params.propertyId).populate('author');
+      const property = await Property.findById(req.params.propertyId).populate('Owner');
       res.status(200).json(property);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  });
+
+  router.get('/myproperty', async (req, res) => {
+    try {
+      const myProperty = await Property.find({ Owner: req.user._id })
+        .populate({
+          path: 'Owner', 
+          select: 'username' 
+        })
+        .populate({
+          path: 'Applicants', 
+          populate: { path: 'Applicant', select: 'username' } 
+        });
+  
+      res.status(200).json(myProperty);
     } catch (error) {
       res.status(500).json(error);
     }

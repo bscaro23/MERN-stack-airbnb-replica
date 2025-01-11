@@ -1,0 +1,47 @@
+/* Style for the bottom navigation bar */
+nav.bottom {
+    position: fixed; /* Fix the nav to the viewport */
+    bottom: 0; /* Position it at the bottom */
+    left: 0;
+    width: 100%; /* Full width of the screen */
+    height: 10vh; /* Set height relative to the viewport */
+    background-color: #333333; /* Green background color */
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Center items horizontally */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow at the top edge */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+  }
+  
+  /* Navigation list */
+  nav.bottom ul {
+    list-style: none; /* Remove default list styling */
+    display: flex; /* Flex layout for horizontal alignment */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navigation items */
+  nav.bottom ul li {
+    margin: 0 20px; /* Spacing between items */
+  }
+  
+  /* Navigation links */
+  nav.bottom ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: white; /* White text for contrast */
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s; /* Smooth hover effect */
+  }
+  
+  /* Hover effect for links */
+  nav.bottom ul li a:hover {
+    color: #FFEB3B; /* Yellow text on hover */
+  }
+  
+  /* Ensure there is no overlap with bottom navigation */
+  body {
+    padding-bottom: 10vh; /* Push content above the bottom nav */
+  }
+  

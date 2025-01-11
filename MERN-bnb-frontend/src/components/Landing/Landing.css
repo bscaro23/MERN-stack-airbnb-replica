@@ -1,0 +1,16 @@
+.main-container{
+    width: 100vw;
+    height: 100vw;
+    display: flex;
+    align-items: center;
+}
+
+.title-box {
+    width: 100vw;
+    height: 70vh;
+}
+
+.main-title {
+    font-size: 4rem;
+    margin: 0;
+}

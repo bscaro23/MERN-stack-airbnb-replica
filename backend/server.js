@@ -7,7 +7,8 @@ const cors = require('cors');
 
 const profilesRouter = require('./controllers/profiles');
 const usersRouter = require('./controllers/users');
-const propertyRouter = require('./controllers/property')
+const propertyRouter = require('./controllers/property');
+const applicationRouter = require('./controllers/application');
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -21,6 +22,7 @@ app.use(cors());
 app.use('/users', usersRouter);
 app.use('/profiles', profilesRouter);
 app.use('/property', propertyRouter);
+app.use('/apply', applicationRouter);
 
 app.listen(3000, () => {
   console.log('The express app is ready!');

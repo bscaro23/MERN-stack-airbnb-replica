@@ -4,7 +4,7 @@ import * as authService from '../../services/authService'
 
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+import './SignupForm.css';
 const SignupForm = (props) => {
   const navigate = useNavigate();
   const [message, setMessage] = useState(['']);
@@ -40,44 +40,53 @@ const SignupForm = (props) => {
   };
 
   return (
-    <main>
+    <main className="signup-container">
       <h1>Sign Up</h1>
-      <p>{message}</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
+      {message && <div className="signup-message">{message}</div>}
+      <form onSubmit={handleSubmit} className="signup-form">
+        <div className="signup-field">
+          <label htmlFor="username" className="signup-label">Username:</label>
           <input
             type="text"
-            id="name"
+            id="username"
             value={username}
             name="username"
             onChange={handleChange}
+            className="signup-input"
           />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+        <div className="signup-field">
+          <label htmlFor="password" className="signup-label">Password:</label>
           <input
             type="password"
             id="password"
             value={password}
             name="password"
             onChange={handleChange}
+            className="signup-input"
           />
         </div>
-        <div>
-          <label htmlFor="confirm">Confirm Password:</label>
+        <div className="signup-field">
+          <label htmlFor="confirm" className="signup-label">Confirm Password:</label>
           <input
             type="password"
             id="confirm"
             value={passwordConf}
             name="passwordConf"
             onChange={handleChange}
+            className="signup-input"
           />
         </div>
-        <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
+        <div className="signup-actions">
+          <button
+            type="submit"
+            className="signup-button"
+            disabled={isFormInvalid()}
+          >
+            Sign Up
+          </button>
           <Link to="/">
-            <button>Cancel</button>
+            <button type="button" className="signup-cancel-button">Cancel</button>
           </Link>
         </div>
       </form>

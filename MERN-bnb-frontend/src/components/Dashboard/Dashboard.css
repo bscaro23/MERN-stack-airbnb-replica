@@ -1,0 +1,78 @@
+/* Style for the category container */
+
+.dashboard{
+  max-height: 85vh;
+  width: 100vw;
+}
+.dashboard-title {
+  padding-left: 5px;
+}
+
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    gap: 5px; /* Space between the boxes */
+    padding: 5px;
+  }
+  
+  /* Style for each category link */
+  .category-link {
+    text-decoration: none; /* Remove underline from links */
+    border: 1px solid #ddd;
+    text-align: end;
+    height: 25vh;
+    width: 45vw;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for card effect */
+    transition: transform 0.2s, box-shadow 0.2s; /* Animation for hover effect */
+    background-size: cover; /* Make the background image cover the entire box */
+    background-position: center; /* Center the image within the box */
+    background-repeat: no-repeat;
+  }
+  
+  /* Hover effect for category link */
+  .category-link:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow */
+  }
+  
+  /* Style for the content inside each link */
+  .category-content {
+    padding: 20px;
+    
+  }
+  
+  /* Style for the title in each category */
+  .category-content h2 {
+    font-size: 15px;
+    color: rgba(221, 221, 221, 0.8);
+    margin-bottom: 10px;
+  }
+  
+  
+  
+  /* Optional: Add hover effect to the titles for more interaction */
+  .category-content :hover {
+    color: white; /* Darker green on hover */
+    }
+  /* Specific images for each category */
+#beach-home {
+  background-image: url('https://luxurybeachhouserental.com/wp-content/uploads/2015/08/Copy-of-Angmering_exterior_065.jpg'); /* Replace with the actual URL */
+}
+
+#mountain-cabin {
+  background-image: url('https://www.buffaloriver.com/wp-content/uploads/2021/02/Mountain-Magic-Exterior-1.jpg'); /* Replace with the actual URL */
+}
+
+#city-apartment {
+  background-image: url('https://www.zillowstatic.com/bedrock/app/uploads/sites/26/types-of-apartments-in-nyc-ef36e4.jpg'); /* Replace with the actual URL */
+}
+
+#countryside-villa {
+  background-image: url('https://images.adsttc.com/media/images/58e5/83c4/e58e/ce64/2400/0256/large_jpg/berlicum(5).jpg?1491436476'); /* Replace with the actual URL */
+}

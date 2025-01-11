@@ -1,7 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import * as propertyService from '../../services/propertyService';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const PropertyForm = ({handleAddProperty}) => {
+const PropertyForm = ({handleAddProperty, handleUpdateProperty}) => {
+
+  const { propertyId } = useParams();
+
+  useEffect(() => {
+    const fetchProperty = async () => {
+      const propertyData = await propertyService.show(propertyId);
+      setFormData(propertyData);
+    };
+    if (propertyId) fetchProperty();
+  }, [propertyId]);
+
+  
+  
+
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
@@ -37,23 +53,19 @@ const PropertyForm = ({handleAddProperty}) => {
 
   
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-        handleAddProperty(formData);
-      console.log('Property data submitted:', formData);
-
-      // Simulate successful submission
-      updateMessage('Property successfully submitted!');
-      setTimeout(() => navigate('/'), 2000); // Redirect after a short delay
-    } catch (err) {
-        updateMessage(err.message)
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    if (propertyId) {
+      handleUpdateProperty(propertyId, formData);
+    } else {
+      handleAddProperty(formData);
     }
   };
+  
 
   return (
     <main>
-      <h1>Add a New Property</h1>
+      <h1>{propertyId ? 'Edit Property' : 'Add New Property'}</h1>
       <p>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <div>

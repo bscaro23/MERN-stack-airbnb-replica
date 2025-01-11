@@ -1,0 +1,43 @@
+/* Style for the top navigation bar */
+nav.top {
+    background-color: #045307;; /* Green background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100vw;
+    height: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    justify-content: center;
+  }
+  
+  /* Navigation list */
+  nav.top ul {
+    list-style: none; /* Remove default list styling */
+    display: flex; /* Flex layout for horizontal alignment */
+    justify-content: flex-end; /* Align items to the right */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navigation items */
+  nav.top ul li {
+    margin-left: 20px; /* Space between navigation items */
+  }
+  
+  /* Navigation links */
+  nav.top ul li a {
+    text-decoration: none; /* Remove underline */
+    color: white; /* White text for contrast */
+    font-size: 16px;
+    font-weight: bold;
+    display: flex; /* Flex layout for aligning icons and text */
+    align-items: center; /* Center align icon and text vertically */
+    gap: 8px; /* Space between the icon and text */
+    transition: color 0.3s, transform 0.3s; /* Smooth hover effects */
+  }
+  
+  /* Hover effect for links */
+  nav.top ul li a:hover {
+    color: #FFEB3B; /* Yellow text on hover */
+    transform: scale(1.1); /* Slight scaling for hover interaction */
+  }

@@ -9,17 +9,12 @@ const applicationSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
-  Charge: {
-    type: Number,
-    required: true
-  },
-  Applicant: [
-    {
+  Applicant: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User', 
+      ref: 'Traveller', 
       required: true
     }
-  ]
+  
 });
 
 const Application = mongoose.model('Application', applicationSchema);

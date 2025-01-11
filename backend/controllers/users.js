@@ -103,8 +103,4 @@ router.post('/signin', async (req, res) => {
   module.exports = router;
 
 
-  //Todo 1. Fix the Log  in issue as it doesnt add the type to the userType to the token for some reason.
-  //Todo 2. Make the create, edit and delete portions of the BnB side
-  //Todo 3. Index Should only show a single person's properties
-  //Todo 4. Make it visible to the renter all properties.
-  //Todo 5. Make it So a Renter can apply to a property.
+ 

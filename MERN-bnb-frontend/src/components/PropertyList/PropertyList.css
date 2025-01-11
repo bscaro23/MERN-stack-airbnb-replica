@@ -1,0 +1,59 @@
+/* Style for the entire property card link */
+.property-card {
+    text-decoration: none; /* Remove underline from the link */
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Card shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  /* Hover effect for the property card */
+  .property-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+  }
+  
+  /* Style for the background image */
+  .property-image {
+    width: 100%;
+    height: 200px; /* Fixed height for the image */
+    background-image: url('https://www.firefly-collection.com/wp-content/uploads/2019/08/View.jpg');
+    background-size: cover; /* Ensure the image covers the entire area */
+    background-position: center; /* Center the image */
+    border-bottom: 2px solid #ddd; /* Optional border to separate image from text */
+  }
+  
+  /* Style for the content inside the card */
+  .property-details {
+    padding: 15px;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  /* Title for the property card */
+  .property-details h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #4CAF50; /* Green color for price */
+    margin-bottom: 10px;
+  }
+  
+  /* Subtitle for the property location */
+  .property-details h2 {
+    font-size: 18px;
+    color: #333; /* Dark text color for location */
+    margin-bottom: 15px;
+  }
+  
+  /* Style for application details (if applicable) */
+  .application-details p {
+    font-size: 14px;
+    color: #666; /* Light gray text */
+    margin: 5px 0;
+    text-align: left;
+  }
+  

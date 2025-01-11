@@ -5,6 +5,8 @@ import * as authService from '../../services/authService'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import './SignupBnBForm.css';
+
 const SignupBnBForm = (props) => {
   const navigate = useNavigate();
   const [message, setMessage] = useState(['']);
@@ -40,44 +42,53 @@ const SignupBnBForm = (props) => {
   };
 
   return (
-    <main>
+    <main className="signup-bnb-container">
       <h1>Sign Up To Let</h1>
-      <p>{message}</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
+      {message && <div className="signup-bnb-message">{message}</div>}
+      <form onSubmit={handleSubmit} className="signup-bnb-form">
+        <div className="signup-bnb-field">
+          <label htmlFor="username" className="signup-bnb-label">Username:</label>
           <input
             type="text"
-            id="name"
+            id="username"
             value={username}
             name="username"
             onChange={handleChange}
+            className="signup-bnb-input"
           />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
+        <div className="signup-bnb-field">
+          <label htmlFor="password" className="signup-bnb-label">Password:</label>
           <input
             type="password"
             id="password"
             value={password}
             name="password"
             onChange={handleChange}
+            className="signup-bnb-input"
           />
         </div>
-        <div>
-          <label htmlFor="confirm">Confirm Password:</label>
+        <div className="signup-bnb-field">
+          <label htmlFor="confirm" className="signup-bnb-label">Confirm Password:</label>
           <input
             type="password"
             id="confirm"
             value={passwordConf}
             name="passwordConf"
             onChange={handleChange}
+            className="signup-bnb-input"
           />
         </div>
-        <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
+        <div className="signup-bnb-actions">
+          <button
+            type="submit"
+            className="signup-bnb-button"
+            disabled={isFormInvalid()}
+          >
+            Sign Up
+          </button>
           <Link to="/">
-            <button>Cancel</button>
+            <button type="button" className="signup-bnb-cancel-button">Cancel</button>
           </Link>
         </div>
       </form>
