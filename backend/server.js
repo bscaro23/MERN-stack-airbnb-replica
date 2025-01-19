@@ -12,6 +12,8 @@ const applicationRouter = require('./controllers/application');
 
 mongoose.connect(process.env.MONGODB_URI);
 
+const port = process.env.PORT || 3000;
+
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
@@ -24,6 +26,6 @@ app.use('/profiles', profilesRouter);
 app.use('/property', propertyRouter);
 app.use('/apply', applicationRouter);
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('The express app is ready!');
 });
