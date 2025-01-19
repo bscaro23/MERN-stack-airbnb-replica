@@ -5,6 +5,7 @@ import { DateRangePicker } from "react-date-range";
 import { useParams } from 'react-router-dom';
 import "react-date-range/dist/styles.css"; // Main CSS file
 import "react-date-range/dist/theme/default.css"; // Theme CSS file
+import "./Apply.css";
 
 const Apply= ({handleAddApplication}) => {
 
@@ -32,8 +33,13 @@ const Apply= ({handleAddApplication}) => {
     <form onSubmit={handleSubmit}>
       <h2>Select a Date Range</h2>
       <DateRangePicker
+        className="custom-calendar"
         ranges={applicationFormData}
         onChange={handleSelect}
+        showDateDisplay={false}
+        renderCalendarInfo={() => null}
+        staticRanges={[]} // Remove the default quick selection options like "Today", "Last 7 Days"
+        inputRanges={[]}
       />
       <div>
         <p>

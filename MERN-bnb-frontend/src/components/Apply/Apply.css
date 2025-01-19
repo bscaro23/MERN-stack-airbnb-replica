@@ -1,0 +1,15 @@
+.custom-calendar .rdrCalendarWrapper {
+    border: none !important;  /* Remove border */
+    box-shadow: none !important;  /* Remove box-shadow */
+    background: transparent !important; /* Remove background */
+    padding: 0 !important; /* Remove padding */
+  }
+  
+  /* Optionally remove other styles */
+  .custom-calendar .rdrCalendar {
+    border-radius: 0 !important;  /* Remove rounded corners if you want */
+  }
+
+  .custom-calendar .rdrDefinedRangesWrapper {
+    width: 0;
+  }
